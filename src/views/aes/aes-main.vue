@@ -120,7 +120,12 @@ export default {
       this.encErrorMsg = ''
       axios.post(`http://bbubbush.synology.me:22048/api/enc/aes`, param)
       .then((res) => {
-        this.encEncodingText = res.data.body
+        if (res.data.resultCode == '200') {
+          this.encEncodingText = res.data.body
+          console.log(this.encEncodingText)
+        } else {
+          this.encErrorMsg = res.data.resultMessage
+        }
       })
       .catch((e) => {
         console.log(e)
@@ -157,7 +162,11 @@ export default {
       this.decErrorMsg = ''
       axios.post(`http://bbubbush.synology.me:22048/api/dec/aes`, param)
       .then((res) => {
-        this.decDecodingText = res.data.body
+        if (res.data.resultCode == '200') {
+          this.decDecodingText = res.data.body
+        } else {
+          this.decErrorMsg = res.data.resultMessage
+        }
       })
       .catch((e) => {
         console.log(e)
