@@ -65,7 +65,7 @@ export default {
         , type: `SHA-512`
       }
       this.encErrorMsg = ''
-      axios.post(`http://localhost:12041/api/enc/sha`, param)
+      axios.post(`http://bbubbush.synology.me:22048/api/enc/sha`, param)
       .then((res) => {
         if (res.data.resultCode == '200') {
           this.encEncodingText = res.data.body

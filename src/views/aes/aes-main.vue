@@ -118,12 +118,9 @@ export default {
         , type: 'CBC'
       }
       this.encErrorMsg = ''
-      axios.post(`http://localhost:12041/api/enc/aes`, param)
+      axios.post(`http://bbubbush.synology.me:22048/api/enc/aes`, param)
       .then((res) => {
-        if (res.data.resultCode == '200') {
-          this.encEncodingText = res.data.body
-          console.log(this.encEncodingText)
-        }
+        this.encEncodingText = res.data.body
       })
       .catch((e) => {
         console.log(e)
@@ -143,8 +140,12 @@ export default {
         this.decErrorMsg = '암호문은 필수값입니다'
         return;
       }
+      if (this.decEncodingText.length != 24) {
+        this.decErrorMsg = '암호문의 길이는 24글자 입니다.'
+        return;
+      }
       if ( !(this.decSecretKey.length == 16 || this.decSecretKey.length == 24 || this.decSecretKey.length == 32) ) {
-        this.decErrorMsg = '비밀키의 길이는 16, 24, 32가 되어야 합니다.'
+        this.decErrorMsg = '비밀키의 길이는 16, 24, 32글자가 되어야 합니다.'
         return;
       }
 
@@ -154,11 +155,9 @@ export default {
         , type: 'CBC'
       }
       this.decErrorMsg = ''
-      axios.post(`http://localhost:12041/api/dec/aes`, param)
+      axios.post(`http://bbubbush.synology.me:22048/api/dec/aes`, param)
       .then((res) => {
-        if (res.data.resultCode == '200') {
-          this.decDecodingText = res.data.body
-        }
+        this.decDecodingText = res.data.body
       })
       .catch((e) => {
         console.log(e)
