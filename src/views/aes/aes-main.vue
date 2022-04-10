@@ -145,10 +145,10 @@ export default {
         this.decErrorMsg = '암호문은 필수값입니다'
         return;
       }
-      if (this.decEncodingText.length != 24) {
-        this.decErrorMsg = '암호문의 길이는 24글자 입니다.'
-        return;
-      }
+      // if (this.decEncodingText.length != 24) {
+      //   this.decErrorMsg = '암호문의 길이는 24글자 입니다.'
+      //   return;
+      // }
       if ( !(this.decSecretKey.length == 16 || this.decSecretKey.length == 24 || this.decSecretKey.length == 32) ) {
         this.decErrorMsg = '비밀키의 길이는 16, 24, 32글자가 되어야 합니다.'
         return;
