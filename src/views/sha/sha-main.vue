@@ -62,10 +62,14 @@ export default {
 
       const param = {
         planeText: this.encPlaneText
-        , type: `SHA-512`
+        , type: `SHA1`
+      }
+
+      const option = {
+        headers: { "Content-Type": `application/json`}
       }
       this.encErrorMsg = ''
-      axios.post(`https://bbubbush.synology.me:22048/api/enc/sha`, param)
+      axios.post(`https://enc.bbubbush.com/api/enc/sha`, param, option)
       .then((res) => {
         if (res.data.resultCode == '200') {
           this.encEncodingText = res.data.body

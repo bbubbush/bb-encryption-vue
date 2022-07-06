@@ -118,7 +118,7 @@ export default {
         , type: 'CBC'
       }
       this.encErrorMsg = ''
-      axios.post(`https://bbubbush.synology.me:22048/api/enc/aes`, param)
+      axios.post(`https://enc.bbubbush.com/api/enc/aes`, param)
       .then((res) => {
         if (res.data.resultCode == '200') {
           this.encEncodingText = res.data.body
@@ -160,7 +160,7 @@ export default {
         , type: 'CBC'
       }
       this.decErrorMsg = ''
-      axios.post(`https://bbubbush.synology.me:22048/api/dec/aes`, param)
+      axios.post(`https://enc.bbubbush.com/api/dec/aes`, param)
       .then((res) => {
         if (res.data.resultCode == '200') {
           this.decDecodingText = res.data.body
